@@ -5,6 +5,7 @@ import Action from "../classes/Action";
 import Player from "../classes/Player";
 import Magnet from "../classes/Magnet";
 import Field from "../classes/Field";
+import Platform from "../classes/Platform";
 
 export default class Level_1 extends Phaser.Scene {
       width = 4413
@@ -14,7 +15,7 @@ export default class Level_1 extends Phaser.Scene {
       player = new Player(this)
       magnet = new Magnet(this,this.parser)
       field = new Field(this,this.parser)
-
+      platform = new Platform(this,this.parser)
       tunnels = {
         objects:[{}],
         graphics:{}
@@ -31,7 +32,7 @@ export default class Level_1 extends Phaser.Scene {
         this.player.setup(this.parser)
         this.magnet.setup(this.player.body)
         this.field.setup()
-
+        this.platform.setup()
         this.matter.world.engine.enableSleeping = true;
         this.cam = this.cameras.main;
         this.cam.startFollow(this.player.body, true);
