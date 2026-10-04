@@ -78,4 +78,28 @@ export default class Action{
       y <= y2 + h2;
 
   };
+
+  createMatterImage(scene,el,options,frame = 0){
+    return   scene.matter.add.image(el.pos[0] + el.size[0] / 2,el.pos[1] + el.size[1] / 2,el.name,frame, {
+      ...options,label: el.name})
+  }
+
+  createImage(scene,el,frame = 0) {
+    return scene.add.image(el.pos[0] + el.size[0] / 2, el.pos[1] + el.size[1] / 2, el.name, frame)
+  }
+
+  isDistance(playerPos,objectPos,threshold = 100){
+    const dist = Math.sqrt(
+      Math.pow(playerPos.x - objectPos.x, 2) + Math.pow(playerPos.y - objectPos.y, 2) // Можно считать только в 2D (X и y)
+    );
+    return dist < threshold;
+  }
+
+  createArray(n = 0){
+    let a = []
+    for (let i = 0; i < n; i++ ){
+      a[i] = i
+    }
+    return a
+  }
 }

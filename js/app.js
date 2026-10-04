@@ -13,15 +13,13 @@ const config = {
   height: 1080,
 
   scale: {
+    parent: 'polaris',
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
     min: { width: 480, height: 270 },   // не схлопывается на маленьких экранах
     max: { width: 2560, height: 1440 }, // не распухает на огромных
   },
-
-  parent: 'polaris',
   backgroundColor: '#0a0e14',   // тёмный космос/фон из ГДД, не чёрный чистый — мягче на глазах
-
   render: {
     antialias: true,            // у вас плавные кривые/скруглённые формы — важно
     pixelArt: false,            // явно: это НЕ пиксель-арт, сглаживание нужно
@@ -45,8 +43,13 @@ const config = {
     target: 60,
     forceSetTimeOut: false,
   },
+  plugins:{
+    scene:[
 
+    ]
+  },
   scene: [Preload,Start,Level_1],
+
 };
 
 let game = new Phaser.Game(config);
